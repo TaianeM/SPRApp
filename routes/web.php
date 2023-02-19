@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImoveisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-    Route::get('/auth/login', [UserController::class, 'login'])->name("auth.login");
+    //Rotas - Autenticação
+    Route::get('/login', [UserController::class, 'login'])->name("auth.login");
     Route::post('/auth', [UserController::class, 'auth'])->name("auth.user");
+
+    //Rotas - Imoveis
+    Route::get('/imoveis/cadastro', [ImoveisController::class, 'cadastro'])->name("imoveis.cadastro");
+    Route::get('/imoveis/documentacao', [ImoveisController::class, 'documentacao'])->name("imoveis.documentacao");
+    Route::get('/imoveis/baixaImobiliaria', [ImoveisController::class, 'baixaImobiliaria'])->name("imoveis.baixaImobiliaria");
+

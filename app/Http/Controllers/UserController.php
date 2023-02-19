@@ -14,6 +14,7 @@ class UserController extends Controller
 
     public function login()
     {
+        
         return view('auth.login', [
 
         ]);
@@ -21,12 +22,23 @@ class UserController extends Controller
 
     public function auth(Request $request)
     {
+        $this->validate($request,[
+            'email' => 'required',
+            'password' => 'required',
+            'secretaria' => 'required',
+        ],[
+            'email.required' => 'Email é obrigatório',
+            'password.required' => 'Senha é obrigatória',
+            'secretaria.required' => 'Secretaria é obrigatória'
+        ]);
+
         if (Auth::attempt(['email' => $request->email, 
             'password' => $request->password,
             'secretaria' => $request->secretaria])):
-        dd('Success');
+    
+            return redirect('/imoveis/cadastro');
         else:
-        dd('Error');
+             return redirect()->back()->with('danger', 'Credenciais não correspondem');
         endif;
     }
 }
