@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SituacaoImovel extends Model
 {
-      use HasFactory;
+    use HasFactory;
 
     protected $table = "imoveis_situacoes";
 
@@ -25,5 +25,17 @@ class SituacaoImovel extends Model
     public function imovel(): HasMany
     {
         return $this->hasMany(Imoveis::class, 'id_situacao_imovel');
+    }
+
+    public static function situacao()
+    {
+        $situacao = [
+            'REGULAR' => 1,
+            'IRREGULAR' => 2,
+            'AUTARQUIA' => 3,
+            'INDIGENA' => 4,
+        ];
+
+        return $situacao;
     }
 }

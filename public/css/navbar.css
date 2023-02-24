@@ -4682,10 +4682,11 @@ textarea.form-control-lg {
 @media (prefers-reduced-motion: reduce) {
   .accordion-button {
     transition: none;
+    background-color: #0b5ed7;
   }
 }
 .accordion-button:not(.collapsed) {
-  color: #0c63e4;
+  color: #000;
   background-color: #e7f1ff;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
 }

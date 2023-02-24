@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\etc;
+namespace App\Models\Orgaos;
 
 use App\Models\Imoveis\Imoveis;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Orgao extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
     protected $table = "orgaos";
 

@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@yield('title')</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- Bootstrap CSS CDN -->
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
@@ -15,43 +17,26 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://kit.fontawesome.com/0d6cc0d304.css" crossorigin="anonymous">
-
-
-
 </head>
-
 <body>
+
+
     <script src="https://kit.fontawesome.com/0d6cc0d304.js" crossorigin="anonymous"></script>
     <!-- SCRIPTS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
-    <script>
-        window.addEventListener('DOMContentLoaded', event => {
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-            // Toggle the side navigation
-            const sidebarToggle = document.body.querySelector('#sidebarToggle');
-            if (sidebarToggle) {
-                // Uncomment Below to persist sidebar toggle between refreshes
-                // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-                //     document.body.classList.toggle('sb-sidenav-toggled');
-                // }
-                sidebarToggle.addEventListener('click', event => {
-                    event.preventDefault();
-                    document.body.classList.toggle('sb-sidenav-toggled');
-                    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains(
-                        'sb-sidenav-toggled'));
-                });
-            }
+    <script src="{{ asset('/js/scripts.js') }}"></script>
+    <script src="{{ asset('/js/api.js') }}"></script>
 
-        });
-    </script>
+
 
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
@@ -65,63 +50,23 @@
                 <ul class="list-unstyled ps-0">
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" style="color: #fff;"
-                            data-bs-toggle="collapse" aria-expanded="false">
-                            Cadastros
-                        </button>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" style="color: #fff;"
                             data-bs-toggle="collapse" data-bs-target="#patrimonio-collapse" aria-expanded="false">
-                            Patrimônio <i class="fa fa-caret-down"></i>
+                            Imóveis <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="collapse" id="patrimonio-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ url('/imoveis/cadastro') }}" class="link-dark rounded" style="color: #fff;">Imóvel</a></li>
-                                <li><a href="{{ url('/imoveis/documentacao') }}" class="link-dark rounded" style="color: #fff;">Documentação</a></li>
-                                <li><a href="#" class="link-dark rounded" style="color: #fff;">Ingresso</a></li>
-                                <li><a href="#" class="link-dark rounded" style="color: #fff;">Vistoria</a></li>
-                                <li><a href="#" class="link-dark rounded" style="color: #fff;">Laudo</a></li>
-                                <li><a href="#" class="link-dark rounded" style="color: #fff;">Georreferenciamento</a></li>
-                                <li><a href="#" class="link-dark rounded" style="color: #fff;">Baixa imobiliária</a></li>
-                                <li><a href="#" class="link-dark rounded" style="color: #fff;">Locados</a></li>
+                                <li><a href="{{ url('/imoveis/index') }}" class="link-dark rounded"
+                                        style="color: #fff;">Todos Cadastrados</a></li>
+
+                                <li><a href="{{ url('/imoveis/criar') }}" class="link-dark rounded"
+                                        style="color: #fff;">Cadastrar</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" style="color: #fff;"
-                            data-bs-toggle="collapse" aria-expanded="false">
-                            Contratos
-                        </button>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" style="color: #fff;"
-                            data-bs-toggle="collapse" data-bs-target="#avaliacao-collapse" aria-expanded="false">
-                            Avaliação <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="collapse" id="avaliacao-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-dark rounded" style="color: #fff;">Rural/Urbana</a></li>
-                                <li><a href="#" class="link-dark rounded" style="color: #fff;">Perícia</a></li>
-                            </ul>
-                        </div>
-                        <li class="mb-1">
-                            <button class="btn btn-toggle align-items-center rounded collapsed" style="color: #fff;"
-                                data-bs-toggle="collapse" aria-expanded="false">
-                                Relatórios
-                            </button>
-                        </li>
-                        <li class="mb-1">
-                            <button class="btn btn-toggle align-items-center rounded collapsed" style="color: #fff;"
-                                data-bs-toggle="collapse" data-bs-target="#gestao-collapse" aria-expanded="false">
-                                Gestão <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="collapse" id="gestao-collapse">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" class="link-dark rounded" style="color: #fff;">Indicadores</a></li>
-                                    <li><a href="#" class="link-dark rounded" style="color: #fff;">Auditoria</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                        <a class="btn btn-toggle align-items-center" style="color: #fff;" href="{{ url('/logout') }}">
+                            Sair
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -180,6 +125,33 @@
                     </div>
                 </div>
             </nav>
+
+            @if (session('success'))
+                <div class="container-fluid alert alert-success">
+                    <p class>{{ session('success') }}</p>
+                </div>
+            @elseif (session('delete'))
+                <div class="container-fluid alert alert-danger">
+                    <p class>{{ session('delete') }}</p>
+                </div>
+            @endif
+
+            @if ($message = session('error'))
+                <div class="container-fluid alert alert-danger">
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="container alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <!-- Page content-->
             <div class="container-fluid">
                 @yield('content')
@@ -187,4 +159,5 @@
         </div>
     </div>
 </body>
+
 </html>

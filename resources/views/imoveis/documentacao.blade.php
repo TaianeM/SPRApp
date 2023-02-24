@@ -4,23 +4,10 @@
 
 @section('content')
 
-    <style>
-        .um-panel {
-            display: block;
-            position: relative;
-            background-color: #dce9f9;
-            padding: 10px 16px 10px;
-            border-radius: 3px 3px 0 0;
-            box-shadow: inset 0 1px 0 rgb(255 255 255 / 50%);
-        }
-    </style>
-
-
     <div class=" col-12">
         <div class="row justify-content-evenly um-panel">
             <div class="col-2">
-                <a style="color: #000000; font-size: 14px;
-      font-weight: bold;"> IMÓVEIS </a>
+                <a class="estilo-titulo"> IMÓVEIS </a>
             </div>
         </div>
     </div>

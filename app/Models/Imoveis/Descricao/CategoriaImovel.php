@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CategoriaImovel extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
     protected $table = "imoveis_categorias";
 

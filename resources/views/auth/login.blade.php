@@ -58,8 +58,8 @@
                                         <span class="input-group-text" id="basic-addon3">
                                             <i class="bi bi-person-fill"></i>
                                         </span>
-                                        <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Email" aria-describedby="basic-addon3">
+                                        <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj"
+                                            placeholder="Usuário" aria-describedby="basic-addon3">
                                     </div>
                                 </div>
 
@@ -82,7 +82,7 @@
                                             <option selected disabled>SELECIONE</option>
                                             <option value="SEPAT">SEPAT</option>
                                             <option value="SEJUS">SEJUS</option>
-                                            <option value="SEDAM">SEDAM</option>
+                                            <option value="DER">DER</option>
                                         </select>
                                     </div>
                                 </div>

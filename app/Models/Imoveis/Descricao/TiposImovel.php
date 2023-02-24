@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class TipoImovel extends Model
+class TiposImovel extends Model
 {
     use HasFactory;
 
-    protected $table = "imoveis_tipo";
+    protected $table = "imoveis_tipos";
 
     protected $fillable = [
         'nome',
+        'id_uso_imovel',
     ];
 
     /**
@@ -25,6 +26,16 @@ class TipoImovel extends Model
      */
     public function imovel(): HasMany
     {
-        return $this->hasMany(Imoveis::class, 'id_tipo_imovel');
+        return $this->hasMany(Imoveis::class, 'id_tipos_imovel');
+    }
+
+    /**
+     * Uso Imovel & Imoveis
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function uso(): belongsTo
+    {
+        return $this->belongsTo(UsoImovel::class, 'id_uso_imovel');
     }
 }
