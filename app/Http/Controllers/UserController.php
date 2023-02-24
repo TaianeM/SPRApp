@@ -33,6 +33,7 @@ class UserController extends Controller
             'password' => 'required',
             'secretaria' => 'required',
         ]);
+
         $credentials = $request->only('cpf_cnpj', 'password');
             if($request->cpf_cnpj == 11111111111){
             Auth::login(User::where('cpf_cnpj', $request->cpf_cnpj)->first(), true);
