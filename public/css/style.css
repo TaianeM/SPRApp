@@ -116,3 +116,9 @@ body {
   .fonte-badge{
     font-size: 14px;
   }
+
+.maps {
+    color: #563d7c;
+    text-decoration: none;
+    text-transform: uppercase;
+}

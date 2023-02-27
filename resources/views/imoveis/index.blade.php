@@ -250,12 +250,16 @@
                         <th scope="">{{ $imovel->id }}</th>
                         <td class=""> {{ $imovel->exists() ? $imovel->nome : '' }} </td>
                         <td> {{ $imovel->exists() ? $imovel->cep : '' }}
-                            {{ $imovel->exists() ? $imovel->uf : '' }},
-                            {{ $imovel->exists() ? $imovel->municipio : '' }} -
                             {{ $imovel->exists() ? $imovel->rua : '' }}
                             {{ $imovel->exists() ? $imovel->bairro : '' }}
                             {{ $imovel->exists() ? $imovel->numero : '' }}
-                            {{ $imovel->exists() ? $imovel->complemento : '' }}
+                            {{ $imovel->exists() ? $imovel->complemento : '' }},
+                            {{ $imovel->exists() ? $imovel->municipio : '' }} -
+                            {{ $imovel->exists() ? $imovel->uf : '' }} . <br/>
+                            <span> <a class="maps" target="new"
+                                href="http://www.google.com.br/maps/preview#!q='
+                            {{ $imovel->exists() ? $imovel->rua : '' }}">MAPA
+                            </a> </span>
                         </td>
                         <td>
                             @if ($imovel->situacao()->first()->id == '1')
