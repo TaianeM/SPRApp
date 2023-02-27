@@ -23,8 +23,8 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
-                        style="font-color: black;">
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" 
+                            style="background-color: #0494c7!important; color: rgb(255, 255, 255)!important;">
                         FILTROS
                     </button>
                 </h2>
@@ -64,8 +64,8 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
                                         <label class="fw-bold" for="select">CATEGORIA DO IMÓVEL: </label>
-                                        <select name="id_tipo_imovel" class="form-select searchSelect" id="id_tipo_imovel"
-                                            style="width:100%!important;">
+                                        <select name="id_tipo_imovel" class="form-select searchSelect" 
+                                        id="id_tipo_imovel" style="width:100%!important;">
                                             <option selected disabled>Selecione</option>
                                             @foreach ($dados['categorias'] as $key => $categorias)
                                                 <option value="{{ $key }}"> {{ $categorias }}</option>

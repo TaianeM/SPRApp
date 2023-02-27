@@ -92,21 +92,21 @@ body {
 .painel {
       display: block;
       position: relative;
-      background-color: #dce9f9;
+      background-color: #0494c7;
       padding: 10px 16px 10px;
       border-radius: 3px 3px 0 0;
       box-shadow: inset 0 1px 0 rgb(255 255 255 / 50%);
   }
 
   .estilo-titulo{
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
   }
 
   .estilo-titulo:hover{
-    color: #000;
+    color: #000000;
   }
 
   .tamanho-fonte{

@@ -49,7 +49,7 @@ class UserController extends Controller
         $result = $client->post($endpoint, $params);
 
         if($result->getStatusCode() == 200){
-            if(User::where('cpf_cnpj', $request->cpf_cnpj)->first()->exists()){
+            if(User::where('cpf_cnpj', $request->cpf_cnpj)->first() != null){
                 if (Auth::attempt($credentials, true)) {
                     Auth::login(User::where('cpf_cnpj', $request->cpf_cnpj)->first(), true);
                     $request->session()->regenerate();
@@ -62,7 +62,7 @@ class UserController extends Controller
             $new_user->secretaria = $request->secretaria;
             $new_user->save();
 
-        if (Auth::attempt(User::where('cpf_cnpj', $request->cpf_cnpj)->first(), true)) {
+        if (Auth::attempt($credentials, true)) {
             Auth::login(User::where('cpf_cnpj', $request->cpf_cnpj)->first(), true);
             $request->session()->regenerate();
             return redirect('/imoveis/index')->withSuccess('Logado com sucesso!');

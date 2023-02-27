@@ -85,20 +85,20 @@
                     <div class="collapse navbar-collapse align-self-center" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto align-items-center ">
                             <li class="nav-item text-center p-2">
-                                <a class="nav-link" href="#!"> <i class="fa fa-barcode" style="font-size:36px">
+                                <a class="nav-link" href="{{ url('/imoveis/criar') }}"> <i class="fa fa-barcode" style="font-size:36px">
                                     </i>
                                 </a>
                                 Cadastros
                             </li>
                             <li class="nav-item text-center p-2">
-                                <a class="nav-link " href="#!">
+                                <a class="nav-link" href="#!">
                                     <i class="fas fa-building" style="font-size:36px">
                                     </i>
                                 </a>
                                 Patrimônio
                             </li>
                             <li class="nav-item text-center p-2">
-                                <a class="nav-link " href="#!">
+                                <a class="nav-link" href="#!">
                                     <i class="fa fa-gavel" style="font-size:36px"></i>
                                 </a>
                                 Avaliação
