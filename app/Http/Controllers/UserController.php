@@ -35,21 +35,24 @@ class UserController extends Controller
         ]);
 
         $credentials = $request->only('cpf_cnpj', 'password');
-            if($request->cpf_cnpj == 11111111111){
-            Auth::login(User::where('cpf_cnpj', $request->cpf_cnpj)->first(), true);
-                    $request->session()->regenerate();
-                    return redirect('/imoveis/criar')->withSuccess('Logado com sucesso');
-            }
+     
         $endpoint = "https://api-sauron.sistemas.ro.gov.br/api/autenticacao/ConfirmarAutenticacao";
         $client = new Client();
         
         $params['headers'] = ['Content-Type' => 'application/json'];
         $params['json'] = ['cpfCnpj' => $request->cpf_cnpj, 'senha' => $request->password];
-        
+        try {
         $result = $client->post($endpoint, $params);
+        } catch (\Throwable $th) {
+            return back()->withErrors('CPF OU SENHA INCORRETOS');
+        }
 
-        if($result->getStatusCode() == 200){
-            if(User::where('cpf_cnpj', $request->cpf_cnpj)->first() != null){
+
+        if ($result->getStatusCode() == 200) {
+            if (User::where('cpf_cnpj', $request->cpf_cnpj)->first() != null) {
+                $user = User::where('cpf_cnpj', $request->cpf_cnpj)->first();
+                $user->password = Hash::make($request->password);
+                $user->save();
                 if (Auth::attempt($credentials, true)) {
                     Auth::login(User::where('cpf_cnpj', $request->cpf_cnpj)->first(), true);
                     $request->session()->regenerate();
@@ -68,7 +71,6 @@ class UserController extends Controller
             return redirect('/imoveis/index')->withSuccess('Logado com sucesso!');
         }
     }
-    
       
      return back();
          
